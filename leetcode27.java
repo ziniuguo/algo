@@ -1,10 +1,10 @@
 package leetcode;
 
-public class leetcode26 {
-    public int removeDuplicates(int[] nums) {
-        int count = 1;
+public class leetcode27 {
+    public int removeElement(int[] nums, int val) {
+        int count = 0;
         for (int i : nums) {
-            if (i != nums[count - 1]) {
+            if (i != val) {
                 nums[count++] = i;
             }
         }
