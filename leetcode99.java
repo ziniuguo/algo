@@ -3,19 +3,35 @@ package leetcode;
 import java.util.ArrayList;
 
 public class leetcode99 {
+
     public void recoverTree(TreeNode root) {
         ArrayList<TreeNode> nodeList = new ArrayList<>();
         nodeList = getList(root, nodeList);
-        for (TreeNode i: nodeList) {
-            for (TreeNode j : nodeList){
-                if (i!=j) {
-                    swapNodeVal(i, j);
-                }
-                if (!isValidBST(root)) {
-                    swapNodeVal(i, j);
+        if (nodeList.size() == 0 || nodeList.size() == 1) {
+            return;
+        }
+        for (int i = 0; i < nodeList.size() - 1; i++) {
+            for (int j = i + 1; j < nodeList.size(); j++) {
+                TreeNode n1 = nodeList.get(i);
+                TreeNode n2 = nodeList.get(j);
+                swapNodeVal(n1, n2);
+                if ( !isValidBST(root)) {
+                    swapNodeVal(n1, n2);
+                } else {
+                    return;
                 }
             }
         }
+//        for (TreeNode i : nodeList) {
+//            for (TreeNode j : nodeList) {
+//                if (i != j) {
+//                    swapNodeVal(i, j);
+//                }
+//                if (!isValidBST(root)) {
+//                    swapNodeVal(i, j);
+//                }
+//            }
+//        }
 
     }
 
