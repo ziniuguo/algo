@@ -18,7 +18,7 @@ import java.math.BigDecimal;
  * }
  * }
  */
-public class leetCode98 {
+public class leetcode98 {
 
     public static boolean isValidBST(TreeNode root) {
         return ValidBST(root, 21474364700L, -214748364800L);
