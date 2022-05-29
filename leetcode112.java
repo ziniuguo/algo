@@ -4,12 +4,11 @@ package leetcode;
 class leetcode112 {
     public static boolean hasPathSum(TreeNode root, int targetSum) {
 
-        TreeNode node = root;
-        if (node == null){
+        if (root == null){
             return false;
         }
 
-        return dfs(node, targetSum, 0);
+        return dfs(root, targetSum, 0);
 
     }
 
