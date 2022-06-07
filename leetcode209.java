@@ -1,6 +1,7 @@
 package leetcode;
 
 public class leetcode209 {
+    // why slow? cuz every time summing up the nums need to sum from the beginning to the end
     public int minSubArrayLen(int target, int[] nums) {
         int i = 0;
         int j = 0;
@@ -16,7 +17,6 @@ public class leetcode209 {
             } else {
                 if (j - i + 1 < out) {
                     out = j - i + 1;
-
                 }
                 i += 1;
             }
