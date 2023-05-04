@@ -9,6 +9,20 @@ public class leetcode1 {
         int targetIn = 6;
         int[] result = twoSum(numsIn, targetIn);
         System.out.println(Arrays.toString(result));
+        int[] result2 = betterTwoSum(numsIn, targetIn);
+        System.out.println(Arrays.toString(result2));
+    }
+
+    public static int[] betterTwoSum(int[] nums, int target) {
+        Map<Integer, Integer> onePassMap = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int theOther = target - nums[i];
+            if (onePassMap.containsKey(theOther)) {
+                return new int[] {onePassMap.get(theOther), i};
+            }
+            onePassMap.put(nums[i], i);
+        }
+        throw new IllegalArgumentException("no solution found");
     }
 
 
