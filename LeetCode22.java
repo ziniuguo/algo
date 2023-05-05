@@ -3,7 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-public class leetcode22 {
+public class LeetCode22 {
     public static List<String> generateParenthesis(int n) {
         ArrayList<String> ansList = new ArrayList<>();
         if (n == 1) {
