@@ -1,6 +1,6 @@
 package leetcode;
 
-public class leetcode11 {
+public class LeetCode11 {
     public int maxArea(int[] height) {
         int max = Integer.MIN_VALUE;
         int currH2 = Integer.MIN_VALUE;

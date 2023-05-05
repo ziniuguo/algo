@@ -2,7 +2,7 @@ package leetcode;
 
 import java.util.*;
 
-public class leetcode15 {
+public class LeetCode15 {
     // 3 sum
     public static void main(String[] args) {
         int[] numsIn = new int[]{-1,0,1,2,-1,-4};

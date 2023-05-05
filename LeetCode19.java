@@ -1,6 +1,6 @@
 package leetcode;
 
-public class leetcode19 {
+public class LeetCode19 {
     public ListNode removeNthFromEnd(ListNode head, int n) {
 
         ListNode first = head;
