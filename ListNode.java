@@ -16,4 +16,26 @@ public class ListNode {
         this.val = val;
         this.next = next;
     }
+
+    ListNode(int[] ints) {
+        if (ints.length != 0) {
+            this.val = ints[0];
+            ListNode listNode = this;
+            for (int i = 1; i < ints.length; i++) {
+                listNode.next = new ListNode();
+                listNode = listNode.next;
+                listNode.val = ints[i];
+            }
+        } else {
+            throw new IllegalArgumentException("You can't use this constructor to instantiate such a ListNode.");
+        }
+    }
+
+    public void printAll() {
+        ListNode listNode = this;
+        do {
+            System.out.println(listNode.val);
+            listNode = listNode.next;
+        } while (listNode != null);
+    }
 }
