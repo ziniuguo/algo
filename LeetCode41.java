@@ -17,29 +17,34 @@ public class LeetCode41 {
     }
 
     public static int firstMissingPositive(int[] nums) {
-        maxPossible = nums.length;
-        for (int currNum : nums) {
-            if (currNum > maxPossible || currNum <= 0) {
-                continue;
-            }
-            valueSwap(nums, currNum, currNum - 1);
+        for (int num : nums) {
+            valueSwap(nums, num);
         }
-        return checkSwapped(nums);
+        int pointer = 1;
+        for (int num : nums) {
+            if (num == pointer) {
+                pointer++;
+            } else {
+                return pointer;
+            }
+        }
+        return pointer;
     }
 
-    private static void valueSwap(int[] nums, int value, int destIdx) {
+    private static void valueSwap(int[] nums, int value) {
+        if (value > nums.length || value <= 0) {
+            return;
+        }
+        int destIdx = value - 1;
         if (nums[destIdx] == value) {
             return;
         }
-        if (nums[destIdx] > maxPossible || nums[destIdx] <= 0) {
-            nums[destIdx] = value;
-        } else {
-            int tempValue = nums[destIdx];
-            nums[destIdx] = value;
-            valueSwap(nums, tempValue, tempValue - 1);
-        }
+        int nextValue = nums[destIdx];
+        nums[destIdx] = value;
+        valueSwap(nums, nextValue);
     }
 
+    /* ===================== useless ===================== */
     public static int maxPossible;
 
     private static int checkSwapped(int[] nums) {
@@ -58,7 +63,7 @@ public class LeetCode41 {
         return pointer;
     }
 
-    /* ===================== useless ===================== */
+
     public static LinkedList<Integer> startIdxStack = new LinkedList<>();
     public static int[] pair = new int[]{
             Integer.MIN_VALUE, Integer.MIN_VALUE
