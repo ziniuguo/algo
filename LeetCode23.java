@@ -1,6 +1,8 @@
 package leetcode;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 public class LeetCode23 {
     public static void main(String[] args) {
@@ -10,6 +12,34 @@ public class LeetCode23 {
         ListNode result = mergeKLists(listNodes);
         result.printAll();
     }
+
+    public static ListNode betterMergeKLists(ListNode[] headers) {
+        if (headers == null || headers.length == 0) {
+            return null;
+        }
+        PriorityQueue<ListNode> queue = new PriorityQueue<>(
+                headers.length, Comparator.comparingInt(a -> a.val)
+        );
+        ListNode ans = new ListNode(114514);
+        ListNode ans2ret = ans;
+        // add all headers to queue
+        for (ListNode header : headers) {
+            if (header != null) {
+                // skip [[1,2], [3,4], []] condition
+                queue.add(header);
+            }
+        }
+        while (!queue.isEmpty()) {
+            // poll for the priority one (smallest one) of all the headers
+            ans.next = queue.poll(); // remove old
+            ans = ans.next;
+            if (ans.next != null) { // add new
+                queue.add((ans.next));
+            }
+        }
+        return ans2ret.next;
+    }
+
     public static ListNode mergeKLists(ListNode[] lists) {
         ListNode ans = new ListNode(114514);
         ListNode ans2ret = ans;
