@@ -18,16 +18,15 @@ public class ListNode {
     }
 
     ListNode(int[] ints) {
-        if (ints.length != 0) {
-            this.val = ints[0];
-            ListNode listNode = this;
-            for (int i = 1; i < ints.length; i++) {
-                listNode.next = new ListNode();
-                listNode = listNode.next;
-                listNode.val = ints[i];
-            }
-        } else {
+        if (ints == null || ints.length == 0) {
             throw new IllegalArgumentException("You can't use this constructor to instantiate such a ListNode.");
+        }
+        this.val = ints[0];
+        ListNode listNode = this;
+        for (int i = 1; i < ints.length; i++) {
+            listNode.next = new ListNode();
+            listNode = listNode.next;
+            listNode.val = ints[i];
         }
     }
 
