@@ -1,16 +1,32 @@
 package leetcode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class LeetCode41 {
     public static void main(String[] args) {
-        int[] numsIn = new int[]{2,3,1};
-        System.out.println();
-        System.out.println(memoryLimitExceededFirstMissingPositive(numsIn));
+        int[] numsIn = new int[]{};
+//        System.out.println(memoryLimitExceededFirstMissingPositive(numsIn));
+        System.out.println(firstMissingPositive(numsIn));
     }
     // first missing positive
     public static int firstMissingPositive(int[] nums) {
-        return 1;
+        // instead of using an ArrayList, use a HashMap here.
+        int pointer = 1;
+        HashMap<Integer, Boolean> recordMap = new HashMap<>();
+        for (int num : nums) {
+            if (num >= 0) {
+                recordMap.put(num, Boolean.TRUE);
+            }
+        }
+        while (true) {
+            Boolean exist = recordMap.get(pointer);
+            if (exist != null) {
+                pointer ++;
+            } else {
+                return pointer;
+            }
+        }
     }
 
     public static int memoryLimitExceededFirstMissingPositive(int[] nums) {
