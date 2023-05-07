@@ -7,17 +7,46 @@ import java.util.LinkedList;
 
 public class LeetCode41 {
     public static void main(String[] args) {
-        int[] numsIn = new int[]{7,5,9,2,1};
-//        System.out.println(memoryLimitExceededFirstMissingPositive(numsIn));
-//        testContinuousSwap();
+        int[] numsIn = new int[]{};
+        System.out.println(memoryLimitExceededFirstMissingPositive(numsIn));
+        System.out.println(canPassButNotOnFirstMissingPositive(numsIn));
+        testContinuousSwap();
+        System.out.println(notGoodFirstMissingPositive(numsIn));
         System.out.println("======= solution =======");
-//        System.out.println(firstMissingPositive(numsIn));
+        System.out.println(firstMissingPositive(numsIn));
     }
-    // first missing positive
+
+    public static int firstMissingPositive(int[] nums) {
+        maxPossible = nums.length;
+        for (int currNum : nums) {
+            if (currNum > maxPossible || currNum <= 0) {
+                continue;
+            }
+            valueSwap(nums, currNum, currNum - 1);
+        }
+        return checkSwapped(nums);
+    }
+
+    private static void valueSwap(int[] nums, int value, int destIdx) {
+        if (nums[destIdx] == value) {
+            return;
+        }
+        if (nums[destIdx] > maxPossible || nums[destIdx] <= 0) {
+            nums[destIdx] = value;
+        } else {
+            int tempValue = nums[destIdx];
+            nums[destIdx] = value;
+            valueSwap(nums, tempValue, tempValue - 1);
+        }
+    }
 
     public static int maxPossible;
+
     private static int checkSwapped(int[] nums) {
-        if (nums.length == 0|| nums[0] != 1) {return 1;}
+        // not really necessary as we use enhanced for loop
+//        if (nums.length == 0 || nums[0] != 1) {
+//            return 1;
+//        }
         int pointer = 1;
         for (int num : nums) {
             if (num == pointer) {
@@ -28,16 +57,19 @@ public class LeetCode41 {
         }
         return pointer;
     }
+
+    /* ===================== useless ===================== */
     public static LinkedList<Integer> startIdxStack = new LinkedList<>();
-    public static int[] pair = new int[] {
+    public static int[] pair = new int[]{
             Integer.MIN_VALUE, Integer.MIN_VALUE
     };
+
     public static int notGoodFirstMissingPositive(int[] nums) {
         // at move nums.length positive integers!
         // if constant space, then cannot use extra HashMap
         // need in-place modify
         startIdxStack.clear();
-        pair = new int[] {
+        pair = new int[]{
                 Integer.MIN_VALUE, Integer.MIN_VALUE
         };
         maxPossible = nums.length;
@@ -52,10 +84,10 @@ public class LeetCode41 {
             }
             continuousSwap(nums, i, pos2Swap);
         }
-        System.out.println("After swap: " + Arrays.toString(nums));
         return checkSwapped(nums);
     }
-    public static void continuousSwap(int[] nums, int i, int j)  {
+
+    public static void continuousSwap(int[] nums, int i, int j) {
         continuousSwapHelper(nums, i, j);
         if (!(pair[0] == Integer.MIN_VALUE && pair[1] == Integer.MIN_VALUE)) {
             // which means cycle detected, restore here
@@ -66,6 +98,7 @@ public class LeetCode41 {
             startIdxStack.clear();
         }
     }
+
     public static void continuousSwapHelper(int[] nums, int i, int j) {
         if (startIdxStack.contains(j)) {
             // cycle detected
@@ -87,13 +120,15 @@ public class LeetCode41 {
             nums[j] = nums[i];
         }
     }
+
     public static void testContinuousSwap() {
-        int[] numsIn = new int[] {5, 4, 3, 1, 2};
+        int[] numsIn = new int[]{5, 4, 3, 1, 2};
         maxPossible = 5;
         // swap
         continuousSwap(numsIn, 0, 4);
-        System.out.println(Arrays.toString(numsIn));
+        System.out.println("Test result: " + Arrays.toString(numsIn));
     }
+
     public static int canPassButNotOnFirstMissingPositive(int[] nums) {
         // instead of using an ArrayList, use a HashMap here.
         int pointer = 1;
@@ -106,7 +141,7 @@ public class LeetCode41 {
         while (true) {
             Boolean exist = recordMap.get(pointer);
             if (exist != null) {
-                pointer ++;
+                pointer++;
             } else {
                 return pointer;
             }
@@ -119,9 +154,9 @@ public class LeetCode41 {
         int pointer = 0;
         // find max no.
         int maxNumber = Integer.MIN_VALUE;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] > maxNumber) {
-                maxNumber = nums[i];
+        for (int j : nums) {
+            if (j > maxNumber) {
+                maxNumber = j;
             }
         }
         if (maxNumber <= 0) {
@@ -140,7 +175,9 @@ public class LeetCode41 {
         }
         // loop through given nums
         for (int num : nums) {
-            if (num <= 0) {continue;}
+            if (num <= 0) {
+                continue;
+            }
             recordList.set(num - 1, Boolean.TRUE);
             if (num - 1 == pointer) {
                 // move pointer
