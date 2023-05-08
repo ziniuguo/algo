@@ -2,7 +2,7 @@ package leetcode;
 
 import java.util.*;
 
-public class leetcode1 {
+public class LeetCode1 {
 
     public static void main(String[] args) {
         int[] numsIn = {3,3,4};

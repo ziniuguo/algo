@@ -1,6 +1,6 @@
 package leetcode;
 
-public class leetcode3 {
+public class LeetCode3 {
     public static int lengthOfLongestSubstring(String s) {
         int ans = 0;
         for (int i=0; i<s.length(); i++){

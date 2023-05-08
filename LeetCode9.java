@@ -1,8 +1,6 @@
 package leetcode;
 
-import java.math.BigDecimal;
-
-public class leetcode9 {
+public class LeetCode9 {
     public static boolean isPalindrome(int x) {
         String x2 = String.valueOf(x);
         for (int i=0; i<x2.length()/2;i++){

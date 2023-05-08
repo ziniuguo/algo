@@ -1,8 +1,6 @@
 package leetcode;
 
-import java.util.ArrayList;
-
-public class leetcode5 {
+public class LeetCode5 {
     public static String longestPalindrome(String s) {
         String ans = "";
         for (int i = 0; i < s.length(); i++) {

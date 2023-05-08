@@ -1,6 +1,6 @@
 package leetcode;
 
-public class leetcode4 {
+public class LeetCode4 {
     public double findMedianSortedArrays(int[] A, int[] B) {
         int m = A.length, n = B.length;
         int l = (m + n + 1) / 2;

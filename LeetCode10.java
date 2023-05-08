@@ -1,6 +1,6 @@
 package leetcode;
 
-public class leetcode10 {
+public class LeetCode10 {
     public static boolean isMatch(String text, String pattern) {
         System.out.println(text);
         System.out.println(pattern);
