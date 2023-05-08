@@ -44,7 +44,7 @@ public class LeetCode41 {
         valueSwap(nums, nextValue);
     }
 
-    /* ===================== useless ===================== */
+    /* ===================== below are useless not optimised solutions ===================== */
     public static int maxPossible;
 
     private static int checkSwapped(int[] nums) {
