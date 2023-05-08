@@ -1,6 +1,6 @@
 package leetcode;
 
-public class leetcode48 {
+public class LeetCode48 {
     public void rotate(int[][] matrix) {
         int len = matrix.length;
         int layer = (len + 1) / 2;

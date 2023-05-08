@@ -2,11 +2,9 @@ package leetcode;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
-public class leetcode46 {
+public class LeetCode46 {
     public static List<List<Integer>> permute(int[] nums) {
         List<Integer> nums2 = new ArrayList<>();
         for (int i = 0; i <= nums.length - 1; i++) {

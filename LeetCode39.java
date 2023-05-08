@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class leetcode39 {
+public class LeetCode39 {
     private class myNode {
 
         int val;
