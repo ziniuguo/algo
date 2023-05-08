@@ -19,7 +19,7 @@ public class LeetCode39 {
         }
     }
 
-    class Solution {
+    private class Solution {
         List<List<Integer>> ansList = new ArrayList<>();
         public List<List<Integer>> combinationSum(int[] candidates, int target) {
 
