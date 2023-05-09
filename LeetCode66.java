@@ -2,7 +2,7 @@ package leetcode;
 
 import java.util.Arrays;
 
-public class leetcode66 {
+public class LeetCode66 {
     public static int[] plusOne(int[] digits) {
 
         int n = digits.length;

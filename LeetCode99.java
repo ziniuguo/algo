@@ -2,7 +2,7 @@ package leetcode;
 
 import java.util.ArrayList;
 
-public class leetcode99 {
+public class LeetCode99 {
 
     public void recoverTree(TreeNode root) {
         ArrayList<TreeNode> nodeList = new ArrayList<>();

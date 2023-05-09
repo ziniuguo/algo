@@ -3,7 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-public class leetcode95 {
+public class LeetCode95 {
     public List<TreeNode> generateTrees(int n) {
         List<TreeNode>[] result = new List[n + 1];
         result[0] = new ArrayList<TreeNode>();

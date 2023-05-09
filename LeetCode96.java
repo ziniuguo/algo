@@ -1,6 +1,6 @@
 package leetcode;
 
-public class leetcode96 {
+public class LeetCode96 {
     public static int numTrees(int n) {
         int[] dp = new int[n + 1];
         dp[0] = 1;

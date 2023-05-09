@@ -1,6 +1,6 @@
 package leetcode;
 
-public class leetcode69 {
+public class LeetCode69 {
     public static int mySqrt(int x) {
         if (x==1) {
             return 1;

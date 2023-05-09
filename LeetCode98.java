@@ -1,7 +1,5 @@
 package leetcode;
 
-import java.math.BigDecimal;
-
 
 /**
  * Definition for a binary tree node.
@@ -18,7 +16,7 @@ import java.math.BigDecimal;
  * }
  * }
  */
-public class leetcode98 {
+public class LeetCode98 {
 
     public static boolean isValidBST(TreeNode root) {
         return ValidBST(root, 21474364700L, -214748364800L);

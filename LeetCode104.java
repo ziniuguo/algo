@@ -1,6 +1,6 @@
 package leetcode;
 
-public class leetcode104 {
+public class LeetCode104 {
     public int maxDepth(TreeNode root) {
         if (root == null) {
             return 0;

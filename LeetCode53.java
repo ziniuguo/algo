@@ -1,8 +1,6 @@
 package leetcode;
 
-import java.util.ArrayList;
-
-public class leetcode53 {
+public class LeetCode53 {
     public int maxSubArray(int[] nums) {
         int currentSum = 0;
         int maxSum = Integer.MIN_VALUE;
