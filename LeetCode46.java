@@ -15,13 +15,11 @@ public class LeetCode46 {
 
     public static List<List<Integer>> permuteRec(List<Integer> nums) {
         List<Integer> inner = new ArrayList<>();
+        List<List<Integer>> retList = new ArrayList<>();
         if (nums.size() == 1) {
-            List<List<Integer>> retList = new ArrayList<>();
             inner.add(nums.get(0));
             retList.add(inner);
-            return retList;
         } else {
-            List<List<Integer>> retList = new ArrayList<>();
             List<List<Integer>> oldList = permuteRec(nums.subList(0, nums.size() - 1)); // [[1]]
             int newInt = nums.get(nums.size() - 1); // 2 现在要把2加到[1]
             for (List<Integer> i : oldList) {
@@ -31,8 +29,8 @@ public class LeetCode46 {
                     retList.add(tempList);
                 }
             }
-            return retList;
         }
+        return retList;
     }
 
     public static void main(String[] args) {
