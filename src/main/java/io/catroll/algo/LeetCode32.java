@@ -8,10 +8,23 @@ public class LeetCode32 {
     public static int longestValidParentheses(String s) {
         int max = 0;
         for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == ')') {
+                continue;
+            }
+            int counter = 0;
             for (int j = i+1; j < s.length()+1; j++) {
-                String curr = s.substring(i, j);
-                if (isValidParenthesis(curr) && curr.length() > max) {
-                    max = curr.length();
+                String currJ = s.substring(j-1, j);
+                if (currJ.equals("(")) {
+                    counter++;
+                    continue;
+                } else {
+                    counter--;
+                }
+                if (counter == 0) {
+                    String curr = s.substring(i, j);
+                    if (isValidParenthesis(curr) && curr.length() > max) {
+                        max = curr.length();
+                    }
                 }
             }
         }
