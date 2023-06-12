@@ -3,18 +3,27 @@ package io.catroll.algo;
 import java.util.Date;
 
 public class LeetCode278 {
-
+    // 1,2,3,444,5
     public int firstBadVersion(int n) {
-        int low = 0;
+        int low = 1;
         int high = n;
-
+        int mid = -1;
         while (low <= high) {
-            int mid = low + (high - low) / 2; // exceed max int
-            if (isBadVersion(mid) && !isBadVersion(mid - 1)) return mid;
-            else if (!isBadVersion(mid)) low = mid + 1; // why
-            else high = mid;
+            mid = (low + high) / 2;
+            if (isBadVersion(mid)) {
+                if (high == mid) {
+                    return mid;
+                }
+                high = mid;
+            } else {
+                if (low == mid) {
+                    return mid + 1;
+                }
+                low = mid;
+            }
         }
-        return -1;
+
+        return mid;
     }
 
     // placeholder code
