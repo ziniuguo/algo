@@ -2,34 +2,30 @@ package io.catroll.algo;
 
 public class LeetCode1114 {
     class Foo {
-        private boolean first = true;
-        private boolean second = true;
-
-
+        private boolean oneDone;
+        private boolean twoDone;
         public Foo() {
-
+            oneDone = false;
+            twoDone = false;
         }
-        public void first(Runnable printFirst) throws InterruptedException {
-            // printFirst.run() outputs "first". Do not change or remove this line.
+        public synchronized void first(Runnable printFirst) throws InterruptedException {
             printFirst.run();
-            first = false;
+            oneDone = true;
+            notifyAll();
         }
-        public void second(Runnable printSecond) throws InterruptedException {
-            // printSecond.run() outputs "second". Do not change or remove this line.
-            while (first) {
-                Thread.sleep(10);
+        public synchronized void second(Runnable printSecond) throws InterruptedException {
+            while (!oneDone) {
+                wait();
             }
             printSecond.run();
-            second = false;
+            twoDone = true;
+            notifyAll();
         }
-
-        public void third(Runnable printThird) throws InterruptedException {
-            // printThird.run() outputs "third". Do not change or remove this line.
-            while (second) {
-                Thread.sleep(10);
+        public synchronized void third(Runnable printThird) throws InterruptedException {
+            while (!twoDone) {
+                wait();
             }
             printThird.run();
         }
     }
-
 }
