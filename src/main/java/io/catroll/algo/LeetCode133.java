@@ -3,7 +3,7 @@ package io.catroll.algo;
 import java.util.ArrayList;
 
 
-public class leetcode133 {
+public class LeetCode133 {
     public Node cloneGraph(Node node) {
         if (node == null) {
             return null;

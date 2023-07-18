@@ -1,6 +1,6 @@
 package io.catroll.algo;
 
-public class leetcode209 {
+public class LeetCode209 {
     // why slow? cuz every time summing up the nums need to sum from the beginning to the end
     public int minSubArrayLen(int target, int[] nums) {
         int i = 0;

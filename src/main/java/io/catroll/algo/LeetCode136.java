@@ -1,9 +1,6 @@
 package io.catroll.algo;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-public class leetcode136 {
+public class LeetCode136 {
     public int singleNumber(int[] nums) {
         int result = 0;
         for(int i : nums) {

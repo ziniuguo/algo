@@ -1,6 +1,6 @@
 package io.catroll.algo;
 
-public class leetcode111 {
+public class LeetCode111 {
     public int minDepth(TreeNode root) {
         if (root == null) {
             return 0;

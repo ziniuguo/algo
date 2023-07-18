@@ -1,7 +1,7 @@
 package io.catroll.algo;
 
 
-class leetcode112 {
+class LeetCode112 {
     public static boolean hasPathSum(TreeNode root, int targetSum) {
 
         if (root == null){

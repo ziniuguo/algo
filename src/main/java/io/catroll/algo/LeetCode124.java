@@ -2,7 +2,7 @@ package io.catroll.algo;
 
 import java.util.ArrayList;
 
-public class leetcode124 {
+public class LeetCode124 {
     public static int maxPathSum(TreeNode root) {
         ArrayList<Integer> ansList = new ArrayList<>();
         ansList.add(Integer.MIN_VALUE);
