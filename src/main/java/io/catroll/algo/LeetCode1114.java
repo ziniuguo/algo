@@ -1,6 +1,9 @@
 package io.catroll.algo;
 
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class LeetCode1114 {
     class Foo {
@@ -121,8 +124,8 @@ public class LeetCode1114 {
     }
 
     class Foo4 {
-        private Semaphore s2;
-        private Semaphore s3;
+        private final Semaphore s2;
+        private final Semaphore s3;
 
         public Foo4() {
             s2 = new Semaphore(0);
@@ -143,6 +146,59 @@ public class LeetCode1114 {
         public void third(Runnable printThird) throws InterruptedException {
             s3.acquire();
             printThird.run();
+        }
+    }
+
+    class Foo5 {
+        private final Lock lock;
+        private boolean oneDone;
+        private boolean twoDone;
+        private final Condition one;
+        private final Condition two;
+
+        public Foo5() {
+            lock = new ReentrantLock();
+            one = lock.newCondition();
+            two = lock.newCondition();
+            oneDone = false;
+            twoDone = false;
+        }
+
+        public void first(Runnable printFirst) throws InterruptedException {
+            lock.lock();
+            try {
+                printFirst.run();
+                oneDone = true;
+                one.signal();
+            } finally {
+                lock.unlock();
+            }
+        }
+
+        public void second(Runnable printSecond) throws InterruptedException {
+            lock.lock();
+            try {
+                while (!oneDone) {
+                    one.await();
+                }
+                printSecond.run();
+                twoDone = true;
+                two.signal();
+            } finally {
+                lock.unlock();
+            }
+        }
+
+        public void third(Runnable printThird) throws InterruptedException {
+            lock.lock();
+            try {
+                while (!twoDone) {
+                    two.await();
+                }
+                printThird.run();
+            } finally {
+                lock.unlock();
+            }
         }
     }
 }
