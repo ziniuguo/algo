@@ -11,7 +11,7 @@ public class LeetCode124 {
         return ansList.get(0);
     }
 
-    public static int dfs(TreeNode node, ArrayList<Integer> ansList) {
+    private static int dfs(TreeNode node, ArrayList<Integer> ansList) {
         if (node.left == null && node.right == null) {
             int ret = node.val;
             if (ret > ansList.get(0)) {

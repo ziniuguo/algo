@@ -12,7 +12,7 @@ class LeetCode112 {
 
     }
 
-    public static boolean dfs(TreeNode node, int targetSum, int curr) {
+    private static boolean dfs(TreeNode node, int targetSum, int curr) {
         curr += node.val;
         if (curr == targetSum && node.left==null && node.right==null) {
             return true;
